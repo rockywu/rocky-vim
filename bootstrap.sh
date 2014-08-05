@@ -5,8 +5,9 @@
 app_name='rocky-vim'
 [ -z "$git_uri" ] && git_uri='https://github.com/rockywu/rocky-vim.git'
 git_branch='master'
+today=`date +%Y%m%d_%s`
+endpath="$HOME/.$app_name"
 debug_mode='0'
-fork_maintainer='0'
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
 
 ############################  BASIC SETUP TOOLS
@@ -22,7 +23,7 @@ success() {
 
 error() {
     msg "\e[31m[✘]\e[0m ${1}${2}"
-    exit 1
+    exit 0
 }
 
 debug() {
@@ -52,9 +53,24 @@ lnif() {
 
 do_backup() {
     if [ -e "$2" ] || [ -e "$3" ] || [ -e "$4" ]; then
-        today=`date +%Y%m%d_%s`
         for i in "$2" "$3" "$4"; do
-            [ -e "$i" ] && [ ! -L "$i" ] && mv "$i" "$i.$today";
+            if [ -e "$i" ]; then
+                linkpath=`readlink $i`
+                if [ "$linkpath" == "$endpath" ];then
+                    continue 1
+                fi
+                if [ -L "$i" ];then
+                    if [ -e "$i.link.backup" ];then
+                        mv "$i.link.backup" "$i.$today.link.backup"
+                        msg "mv \"$i.link.backup\" \"$i.$today.link.backup\""
+                    fi
+                    mv "$i" "$i.link.backup"
+                    msg "mv \"$i\" \"$i.link.backup\""
+                else
+                    mv "$i" "$i.$today.nolink.backup"
+                    msg "mv \"$i\" \"$i.$today.nolink.backup\""
+                fi
+            fi
         done
         ret="$?"
         success "$1"
@@ -64,7 +80,6 @@ do_backup() {
 
 upgrade_repo() {
       msg "trying to update $1"
-        endpath="$HOME/.$app_name"
 
       if [ "$1" = "$app_name" ]; then
           cd "$HOME/.$app_name" &&
@@ -83,7 +98,6 @@ upgrade_repo() {
 
 clone_repo() {
     program_exists "git" "Sorry, we cannot continue without GIT, please install it first."
-    endpath="$HOME/.$app_name"
 
     if [ ! -e "$endpath/.git" ]; then
         git clone --recursive -b "$git_branch" "$git_uri" "$endpath"
@@ -96,7 +110,6 @@ clone_repo() {
 }
 
 clone_vundle() {
-    endpath="$HOME/.$app_name"
     if [ ! -e "$endpath/bundle/vundle" ]; then
         git clone $VUNDLE_URI "$endpath/bundle/vundle"
     else
@@ -108,16 +121,15 @@ clone_vundle() {
 }
 
 create_symlinks() {
-    endpath="$HOME/.$app_name"
 
-    if [ ! -d "$endpath/.vim/bundle" ]; then
-        mkdir -p "$endpath/.vim/bundle"
+    if [ ! -d "$endpath/bundle" ]; then
+        mkdir -p "$endpath/bundle"
     fi
 
     lnif "$endpath/.vimrc"              "$HOME/.vimrc"
     lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
     lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
-    lnif "$endpath/.vim"                "$HOME/.vim"
+    lnif "$endpath"                "$HOME/.vim"
 
     # Useful for fork maintainers
     touch  "$HOME/.vimrc.local"
@@ -129,7 +141,6 @@ create_symlinks() {
 
 setup_vundle() {
     system_shell="$SHELL"
-    endpath="$HOME/.$app_name"
     export SHELL='/bin/sh'
     if [ -e "$endpath/.vimrc.bundles" ]; then
         vim -u "$endpath/.vimrc.bundles" +BundleInstall! +BundleClean +qall
@@ -145,7 +156,7 @@ setup_vundle() {
 ############################ MAIN()
 program_exists "vim" "To install $app_name you first need to install Vim."
 
-do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S`" \
+do_backup   "Your old vim stuff has a suffix now and looks like .vim.`date +%Y%m%d%S` or .vim*.link.backup" \
         "$HOME/.vim" \
         "$HOME/.vimrc" \
         "$HOME/.gvimrc"

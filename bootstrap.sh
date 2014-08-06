@@ -98,7 +98,7 @@ upgrade_repo() {
       fi
 
       if [ "$1" = "vundle" ]; then
-          cd "$endpath/bundle/vundle" &&
+          cd "$endpath/bundle/Vundle.vim" &&
           git pull --rebase origin master
       fi
 

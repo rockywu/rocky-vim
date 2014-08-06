@@ -98,9 +98,6 @@
     "Set to auto read when a file is changed from the outside
     set autoread
 
-    " 开启拼写建议
-    set spell
-
     " 关掉智能补全时的预览窗口
     set completeopt=longest,menu
 

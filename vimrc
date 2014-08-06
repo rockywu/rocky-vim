@@ -154,3 +154,59 @@ set expandtab
 
 
 " }
+
+" 快捷键 {
+"--------------------------------快速键设置--------------------------------
+"Fast reloading of the _vimrc
+map <silent> <leader>ss :source ~/.vim/_vimrc<cr>
+
+"Fast editing of _vimrc
+" map <silent> <leader>ee :call SwitchToBuf("~/.vim/_vimrc")<cr>
+
+"实现CTRL-S保存操作
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+
+"快速保存快捷键
+nmap <silent> <leader>ww :w<cr>
+nmap <silent> <leader>wf :w!<cr>
+
+"快速退出快捷键
+nmap <silent> <leader>qw :wq<cr>
+nmap <silent> <leader>qf :q!<cr>
+nmap <silent> <leader>qq :q<cr>
+nmap <silent> <leader>qa :qa<cr>
+"快速切换窗口
+nmap <C-w> <C-w><C-w>
+
+"Tab configuration
+map <leader>tn :tabnew
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+nmap <silent> <leader>bp :tabprevious<cr>
+nmap <silent> <leader>bn :tabnext<cr>
+nmap <F3> :tabprevious<cr>
+nmap <F4> :tabnext<cr>
+"创建草稿文件
+map <leader>es :tabnew<cr>:setl buftype=nofile<cr>
+"创建临时文件
+map <leader>ec :tabnew ~/tmp/scratch.txt<cr>
+
+"使用 *,#搜索当前选择的内容
+" vnoremap <silent> * :call VisualSearch('f')<CR>
+" vnoremap <silent> # :call VisualSearch('b')<CR>
+
+" 删除行尾空格并且保存该文件
+" nmap <silent> <leader>ws :call DeleteTrailingWS()<cr>:w<cr>
+
+" 设置自动完成快捷键 设置
+set completeopt=menu
+set complete-=u
+set complete-=i
+inoremap <C-]>             <C-X><C-]>
+inoremap <C-F>             <C-X><C-F>
+inoremap <C-D>             <C-X><C-D>
+inoremap <C-L>             <C-X><C-L>
+
+" }

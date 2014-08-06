@@ -41,6 +41,103 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Use .vimrc.config config {
+if filereadable(expand("~/.vimrc.before"))
+    source ~/.vimrc.before
+endif
+" }
+
 
 " rocky-vim configuration {
+    " list only the plugin groups you will use
+    if !exists('g:rocky_bundle_groups')
+        let g:rocky_bundle_groups=['general', 'neocomplcache', 'writing', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
+    endif
+
+    " General {
+        if count(g:rocky_bundle_groups, 'general')
+
+        endif
+    " }
+
+    " Snippets & AutoComplete {
+        if count(g:rocky_bundle_groups, 'neocomplcache')
+            Bundle 'Shougo/neocomplcache'
+            Bundle 'Shougo/neosnippet'
+            Bundle 'Shougo/neosnippet-snippets'
+            Bundle 'honza/vim-snippets'
+        endif
+    " }
+
+    " Writing {
+        if count(g:rocky_bundle_groups, 'writing')
+            Bundle 'reedes/vim-litecorrect'
+            Bundle 'reedes/vim-textobj-sentence'
+            Bundle 'reedes/vim-textobj-quote'
+            Bundle 'reedes/vim-wordy'
+        endif
+    " }
+
+    " General Programming {
+        if count(g:rocky_bundle_groups, 'programming')
+            if executable('ctags')
+                Bundle 'majutsushi/tagbar'
+            endif
+        endif
+    " }
+
+    " PHP {
+        if count(g:rocky_bundle_groups, 'php')
+            Bundle 'spf13/PIV'
+            Bundle 'arnaud-lb/vim-php-namespace'
+            Bundle 'beyondwords/vim-twig'
+        endif
+    " }
+
+    " Python {
+        if count(g:rocky_bundle_groups, 'python')
+            " Pick either python-mode or pyflakes & pydoc
+            Bundle 'klen/python-mode'
+            Bundle 'python.vim'
+            Bundle 'python_match.vim'
+            Bundle 'pythoncomplete'
+        endif
+    " }
+
+    " Javascript {
+        if count(g:rocky_bundle_groups, 'javascript')
+            Bundle 'elzr/vim-json'
+            Bundle 'groenewege/vim-less'
+            Bundle 'pangloss/vim-javascript'
+            Bundle 'briancollins/vim-jst'
+            Bundle 'kchmck/vim-coffee-script'
+        endif
+    " }
+
+    "HTML {
+        if count(g:rocky_bundle_groups, 'html')
+            Bundle 'amirh/HTML-AutoCloseTag'
+            Bundle 'hail2u/vim-css3-syntax'
+            Bundle 'gorodinskiy/vim-coloresque'
+            Bundle 'tpope/vim-haml'
+        endif
+    " }
+
+    " Ruby {
+        if count(g:rocky_bundle_groups, 'ruby')
+            Bundle 'tpope/vim-rails'
+            let g:rubycomplete_buffer_loading = 1
+        endif
+    " }
+
+    "Misc {
+        if count(g:rocky_bundle_groups, 'misc')
+            Bundle 'tpope/vim-markdown'
+            Bundle 'spf13/vim-preview'
+            Bundle 'tpope/vim-cucumber'
+            Bundle 'cespare/vim-toml'
+            Bundle 'quentindecock/vim-cucumber-align-pipes'
+            Bundle 'Puppet-Syntax-Highlighting'
+        endif
+    " }
 " }

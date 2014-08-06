@@ -8,7 +8,7 @@ git_branch='master'
 today=`date +%Y%m%d_%s`
 endpath="$HOME/.$app_name"
 debug_mode='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -121,8 +121,8 @@ clone_repo() {
 }
 
 clone_vundle() {
-    if [ ! -e "$endpath/bundle/vundle" ]; then
-        git clone $VUNDLE_URI "$endpath/bundle/vundle"
+    if [ ! -e "$endpath/bundle/Vundle.vim" ]; then
+        git clone $VUNDLE_URI "$endpath/bundle/Vundle.vim"
     else
         upgrade_repo "vundle"   "Successfully updated vundle"
     fi

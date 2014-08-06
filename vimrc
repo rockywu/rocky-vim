@@ -193,3 +193,12 @@
     nmap <silent> <leader>ws :call DeleteTrailingWS()<cr>:w<cr>
 
 " }
+
+" 插件管理 {
+    "powerline{ 
+        set guifont=PowerlineSymbols\ for\ Powerline 
+        set nocompatible 
+        set t_Co=256 
+        let g:Powerline_symbols = 'fancy' 
+    "} 
+" }

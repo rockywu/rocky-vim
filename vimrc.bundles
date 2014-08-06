@@ -56,7 +56,9 @@ endif
 
     " General {
         if count(g:rocky_bundle_groups, 'general')
-
+            Bundle 'scrooloose/nerdtree'
+            Bundle 'jistr/vim-nerdtree-tabs'
+            Bundle 'Lokaltog/powerline'
         endif
     " }
 

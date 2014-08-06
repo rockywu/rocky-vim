@@ -5,7 +5,7 @@ msg() {
     printf '%b\n' "$1" >&2
 }
 result(){
-    if [ "$ret" -eq '0' ]; then
+    if [ "$?" -eq '0' ]; then
         msg "\e[32m[✔]\e[0m ${1}${2}"
     else
         msg "\e[31m[✘]\e[0m ${1}${2}"
@@ -16,7 +16,7 @@ error() {
     exit 0
 }
 if [ ! -e "$HOME/.vimrc.link.backup" ] && [ ! -d "$HOME/.vim.link.backup" ]; then
-    error "don't run backup"
+    error "don't repair"
 fi
 if [ -e "$HOME/.vimrc.link.backup" ]; then
     str="mv \"$HOME/.vimrc.link.backup\" \"$HOME/.vimrc\""

@@ -14,10 +14,11 @@ debug_mode='0'
 msg() {
     printf '%b\n' "$1" >&2
 }
-
-success() {
+result(){
     if [ "$ret" -eq '0' ]; then
-    msg "\e[32m[✔]\e[0m ${1}${2}"
+        msg "\e[32m[✔]\e[0m ${1}${2}"
+    else
+        msg "\e[31m[✘]\e[0m ${1}${2}"
     fi
 }
 
@@ -48,6 +49,7 @@ lnif() {
         ln -sf "$1" "$2"
     fi
     ret="$?"
+    result "ln -sf \"$1\" \"$2\""
     debug
 }
 
@@ -62,18 +64,24 @@ do_backup() {
                 if [ -L "$i" ];then
                     if [ -e "$i.link.backup" ];then
                         mv "$i.link.backup" "$i.$today.link.backup"
-                        msg "mv \"$i.link.backup\" \"$i.$today.link.backup\""
+                        ret="$?"
+                        result "mv \"$i.link.backup\" \"$i.$today.link.backup\""
+                        debug
                     fi
                     mv "$i" "$i.link.backup"
-                    msg "mv \"$i\" \"$i.link.backup\""
+                    ret="$?"
+                    result "mv \"$i\" \"$i.link.backup\""
+                    debug
                 else
                     mv "$i" "$i.$today.nolink.backup"
-                    msg "mv \"$i\" \"$i.$today.nolink.backup\""
+                    ret="$?"
+                    result "mv \"$i\" \"$i.$today.nolink.backup\""
+                    debug
                 fi
             fi
         done
         ret="$?"
-        success "$1"
+        result "$1"
         debug
    fi
 }
@@ -92,7 +100,7 @@ upgrade_repo() {
       fi
 
       ret="$?"
-      success "$2"
+      result "$2"
       debug
 }
 
@@ -102,7 +110,7 @@ clone_repo() {
     if [ ! -e "$endpath/.git" ]; then
         git clone --recursive -b "$git_branch" "$git_uri" "$endpath"
         ret="$?"
-        success "$1"
+        result "$1"
         debug
     else
         upgrade_repo "$app_name"    "Successfully updated $app_name"
@@ -116,7 +124,7 @@ clone_vundle() {
         upgrade_repo "vundle"   "Successfully updated vundle"
     fi
     ret="$?"
-    success "$1"
+    result "$1"
     debug
 }
 
@@ -135,7 +143,7 @@ create_symlinks() {
     touch  "$HOME/.vimrc.local"
 
     ret="$?"
-    success "$1"
+    result "$1"
     debug
 }
 
@@ -149,7 +157,7 @@ setup_vundle() {
     fi
     export SHELL="$system_shell"
 
-    success "$1"
+    result "$1"
     debug
 }
 

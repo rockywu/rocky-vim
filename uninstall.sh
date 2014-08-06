@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 endpath="$HOME/.rocky-vim"
-vimrcbak="$HOME/.vimrc.backup"
 
 msg() {
     printf '%b\n' "$1" >&2
 }
-
-success() {
-    msg "\e[32m[✔]\e[0m ${1}${2}"
+result(){
+    if [ "$ret" -eq '0' ]; then
+        msg "\e[32m[✔]\e[0m ${1}${2}"
+    else
+        msg "\e[31m[✘]\e[0m ${1}${2}"
+    fi
 }
 error() {
     msg "\e[31m[✘]\e[0m ${1}${2}"
@@ -19,18 +21,18 @@ fi
 if [ -e "$HOME/.vimrc.link.backup" ]; then
     str="mv \"$HOME/.vimrc.link.backup\" \"$HOME/.vimrc\""
     eval $str
-    success $str
+    result $str
 fi
 if [ -d "$HOME/.vim.link.backup" ]; then
     rm -rf "$HOME/.vim"
     str="mv \"$HOME/.vim.link.backup\" \"$HOME/.vim\""
     eval $str
-    success $str
+    result $str
 fi
 if [ -e "$HOME/.vimrc.bundles" ]; then
     str="rm \"$HOME/.vimrc.bundles\""
     eval $str
-    success $str
+    result $str
 fi
 
 #rm -rf $endpath

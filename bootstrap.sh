@@ -61,6 +61,9 @@ do_backup() {
                 if [ "$linkpath" == "$endpath" ];then
                     continue 1
                 fi
+                if [ "$linkpath" == "$endpath/vimrc" ];then
+                    continue 1
+                fi
                 if [ -L "$i" ];then
                     if [ -e "$i.link.backup" ];then
                         mv "$i.link.backup" "$i.$today.link.backup"

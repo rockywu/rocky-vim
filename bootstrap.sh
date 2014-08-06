@@ -134,9 +134,9 @@ create_symlinks() {
         mkdir -p "$endpath/bundle"
     fi
 
-    lnif "$endpath/.vimrc"              "$HOME/.vimrc"
-    lnif "$endpath/.vimrc.bundles"      "$HOME/.vimrc.bundles"
-    lnif "$endpath/.vimrc.before"       "$HOME/.vimrc.before"
+    lnif "$endpath/vimrc"              "$HOME/.vimrc"
+    lnif "$endpath/vimrc.bundles"      "$HOME/.vimrc.bundles"
+    lnif "$endpath/vimrc.before"       "$HOME/.vimrc.before"
     lnif "$endpath"                "$HOME/.vim"
 
     # Useful for fork maintainers
@@ -150,10 +150,10 @@ create_symlinks() {
 setup_vundle() {
     system_shell="$SHELL"
     export SHELL='/bin/sh'
-    if [ -e "$endpath/.vimrc.bundles" ]; then
-        vim -u "$endpath/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+    if [ -e "$HOME/.vimrc.bundles" ]; then
+        vim -u "$HOME/.vimrc.bundles" +BundleInstall! +BundleClean +qall
     else
-        error "have not $endpath/.vimrc.bundles"
+        error "have not $HOME/.vimrc.bundles"
     fi
     export SHELL="$system_shell"
 

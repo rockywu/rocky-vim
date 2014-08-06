@@ -47,12 +47,17 @@ if filereadable(expand("~/.vimrc.before"))
 endif
 " }
 
-
 " rocky-vim configuration {
     " list only the plugin groups you will use
     if !exists('g:rocky_bundle_groups')
-        let g:rocky_bundle_groups=['general', 'neocomplcache', 'writing', 'programming', 'php', 'ruby', 'python', 'go', 'twig', 'javascript', 'haskell', 'html', 'misc', 'scala']
+        let g:rocky_bundle_groups=['color', 'general', 'neocomplcache', 'writing', 'programming', 'php', 'python', 'twig', 'javascript', 'html', 'misc']
     endif
+
+    " Color {
+        if count(g:rocky_bundle_groups, 'color')
+            Bundle 'altercation/vim-colors-solarized'
+        endif
+    " }
 
     " General {
         if count(g:rocky_bundle_groups, 'general')

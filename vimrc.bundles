@@ -52,10 +52,15 @@ endif
     if !exists('g:rocky_bundle_groups')
         let g:rocky_bundle_groups=['color', 'general', 'neocomplcache', 'writing', 'programming', 'php', 'python', 'twig', 'javascript', 'html', 'misc']
     endif
+    if !exists('g:rocky_bundle_color_groups')
+        " you can set powerline | default solarized
+        let g:rocky_bundle_color_groups=['solarized']
+    endif
 
     " Color {
         if count(g:rocky_bundle_groups, 'color')
             Bundle 'altercation/vim-colors-solarized'
+            Bundle 'Lokaltog/powerline'
         endif
     " }
 
@@ -63,7 +68,8 @@ endif
         if count(g:rocky_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
             Bundle 'jistr/vim-nerdtree-tabs'
-            Bundle 'Lokaltog/powerline'
+            Bundle 'kien/ctrlp.vim'
+            Bundle 'tacahiroy/ctrlp-funky'
         endif
     " }
 
@@ -87,9 +93,9 @@ endif
 
     " General Programming {
         if count(g:rocky_bundle_groups, 'programming')
-            if executable('ctags')
-                Bundle 'majutsushi/tagbar'
-            endif
+        "if executable('ctags')
+            Bundle 'majutsushi/tagbar'
+        "endif
         endif
     " }
 

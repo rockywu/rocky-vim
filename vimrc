@@ -194,11 +194,13 @@
 
 " }
 
-" 插件管理 {
-    "powerline{ 
-        set guifont=PowerlineSymbols\ for\ Powerline 
-        set nocompatible 
-        set t_Co=256 
-        let g:Powerline_symbols = 'fancy' 
-    "} 
+" 插件管理配置 {
+    if filereadable(expand("~/.vimrc.plugin"))
+        source ~/.vimrc.plugin
+    endif
+" }
+" 本地个性化配置 {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
 " }

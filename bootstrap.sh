@@ -137,10 +137,11 @@ create_symlinks() {
         mkdir -p "$endpath/bundle"
     fi
 
-    lnif "$endpath/vimrc"              "$HOME/.vimrc"
-    lnif "$endpath/vimrc.bundles"      "$HOME/.vimrc.bundles"
-    lnif "$endpath/vimrc.before"       "$HOME/.vimrc.before"
-    lnif "$endpath"                "$HOME/.vim"
+    lnif "$endpath/vimrc"           "$HOME/.vimrc"
+    lnif "$endpath/vimrc.bundles"   "$HOME/.vimrc.bundles"
+    lnif "$endpath/vimrc.before"    "$HOME/.vimrc.before"
+    lnif "$endpath/vimrc.plugin"    "$HOME/.vimrc.plugin"
+    lnif "$endpath"                 "$HOME/.vim"
 
     # Useful for fork maintainers
     touch  "$HOME/.vimrc.local"

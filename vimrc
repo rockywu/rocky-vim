@@ -6,12 +6,13 @@ endfunction
         source ~/.vimrc.bundles
     endif
 " }
-
-" 基本参数配置 {
-    set nocompatible                                    " 关闭vim模仿vi模式
+" 全局变量设定 {
     let mapleader = ","                                 " 定义快捷按钮
     let g:mapleader = ","                               " 定义全局快捷按钮
     let g:snips_author="rockywu 吴佳雷"                 " 定义作者信息
+" }
+" 基本参数配置 {
+    set nocompatible                                    " 关闭vim模仿vi模式
     set hlsearch                                        " 高亮显示结果
     set showmatch                                       " 高亮显示匹配的括号
     set incsearch                                       " 在输入搜索内容实时匹配
@@ -25,11 +26,16 @@ endfunction
     set completeopt=longest,menu                        " 关掉智能补全时的预览窗口
     set ignorecase                                      " 搜索时忽略大小写
     set shiftwidth=4                                    " 第一行设置tab键为4个空格，第二行设置当行之间交错时使用4个空格
-    set tabstop=4                                       " 让一个tab等于4个空格 
+    set tabstop=4                                       " 让一个tab等于4个空格
     set softtabstop=4                                   " 使用4个空格来代替tab 简写 set sts=4
     set expandtab                                       " 将插入状态下的tab 更改为空格
     set ffs=unix,dos                                    " 设置预览模式为unix or dos(windows)
     set ff=unix                                         " 设置写入模式为unix
+    set encoding=utf-8                                  " 设置输入编码为utf-8
+    set fileencodings=cp936,gb18030,gbk,gb2312,utf-8,utf-16,ucs-bom,latin-1,big5    " 设置查阅编码集
+    filetype on                                         " 打开文件类型自动检测功能
+    syntax enable                                       " 设置语法高亮 Highlight进行设置。
+    syntax on                                           " 阻止vim 用缺少值覆盖自定义的高亮设置
 
 
 

@@ -1,3 +1,10 @@
+silent function! OSX()
+    return has('macunix')
+endfunction
+
+silent function! LINUX()
+    return has('unix') && !has('macunix') && !has('win32unix')
+endfunction
 " Use bundles config {
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles

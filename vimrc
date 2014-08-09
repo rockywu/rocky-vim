@@ -1,17 +1,17 @@
 silent function! LINUX()
     return has('unix')
 endfunction
-" Use bundles config {
+" Use bundles config {{
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-" }
-" 全局变量设定 {
+" }}
+" 全局变量设定 {{
     let mapleader = ","                                 " 定义快捷按钮
     let g:mapleader = ","                               " 定义全局快捷按钮
     let g:snips_author="rockywu 吴佳雷"                 " 定义作者信息
-" }
-" 基本参数配置 {
+" }}
+" 基本参数配置 {{
     set nocompatible                                    " 关闭vim模仿vi模式
     set hlsearch                                        " 高亮显示结果
     set showmatch                                       " 高亮显示匹配的括号
@@ -32,14 +32,59 @@ endfunction
     set ffs=unix,dos                                    " 设置预览模式为unix or dos(windows)
     set ff=unix                                         " 设置写入模式为unix
     set encoding=utf-8                                  " 设置输入编码为utf-8
-    set fileencodings=cp936,gb18030,gbk,gb2312,utf-8,utf-16,ucs-bom,latin-1,big5    " 设置查阅编码集
-    filetype on                                         " 打开文件类型自动检测功能
+    set fileencoding=uft-8                              " 设置保存文件的编码 utf-8
+    set fileencodings=cp936,gb18030,gbk,gb2312,utf-8,utf-16,ucs-bom,latin-1,big5    " 设置文件编码检测类型及支持格式
+    filetype plugin indent on                           " 自动进行文件类型检测功能（可以自动使用插件进行）
     syntax enable                                       " 设置语法高亮 Highlight进行设置。
     syntax on                                           " 阻止vim 用缺少值覆盖自定义的高亮设置
+    set autoread                                        " 文件在Vim之外修改过，自动重新读入
+    set foldmethod=syntax                               " 用语法高亮来定义折叠(还有很多模式可以查询google)
+    scriptencoding utf-8                                " 设置脚本编码
+    set history=1000                                    " history文件中需要记录的行数
+    set shortmess+=atI                                  " 启动的时候不显示那个援助索马里儿童的提示
+    set hidden                                          " 允许缓存区切换时不保存
+    set viewoptions=folds,options,cursor,unix,slash     " Better Unix / Windows compatibility
+    set iskeyword+=_,#,-,$                              " 设置以下字符部分被当做单词分割，使用-=_,#,-,$可以除去
+" }}
 
+" 基本UI 配置 {{
+    set showmode                                        " 显示 --INSERT-- 之类的字眼在左下角的状态栏
+    set backup                                          " 开启编辑文件backup
+    " Initialize directories {
+        function! InitializeDirectories()
+            let parent = $HOME
+            let prefix = 'vim'
+            let dir_list = {
+                        \ 'backup': 'backupdir',
+                        \ 'views': 'viewdir',
+                        \ 'swap': 'directory' }
 
+            if has('persistent_undo')
+                let dir_list['undo'] = 'undodir'
+            endif
 
-" }
+            let common_dir = parent . '/.' . prefix
+
+            for [dirname, settingname] in items(dir_list)
+                let directory = common_dir . dirname . '/'
+                if exists("*mkdir")
+                    if !isdirectory(directory)
+                        call mkdir(directory)
+                    endif
+                endif
+                if !isdirectory(directory)
+                    echo "Warning: Unable to create backup directory: " . directory
+                    echo "Try: mkdir -p " . directory
+                else
+                    let directory = substitute(directory, " ", "\\\\ ", "g")
+                    exec "set " . settingname . "=" . directory
+                endif
+            endfor
+        endfunction
+        call InitializeDirectories()            " 创建备份目录和swap目录（.swap&~)
+    " }
+
+" }}
 
 " Use Plugin config {
     if filereadable(expand("~/.vimrc.plugin"))

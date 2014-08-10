@@ -33,7 +33,7 @@ endfunction
     set ff=unix                                         " 设置写入模式为unix
     set encoding=utf-8                                  " 设置输入编码为utf-8
     set fileencoding=uft-8                              " 设置保存文件的编码 utf-8
-    set fileencodings=cp936,gb18030,gbk,gb2312,utf-8,utf-16,ucs-bom,latin-1,big5    " 设置文件编码检测类型及支持格式
+    set fileencodings=utf-8,gbk,gb2312,ucs-bom,latin-1,cp936,gb18030,utf-16,big5    " 设置文件编码检测类型及支持格式
     filetype plugin indent on                           " 自动进行文件类型检测功能（可以自动使用插件进行）
     syntax enable                                       " 设置语法高亮 Highlight进行设置。
     syntax on                                           " 阻止vim 用缺少值覆盖自定义的高亮设置
@@ -104,8 +104,11 @@ endfunction
     endif
 " }
 
-nmap <F3> :tabprevious<cr>
-nmap <F4> :tabnext<cr>
+map <C-l> :tabn<cr>             "下一个tab
+map <C-h> :tabp<cr>             "上一个tab
+map <C-n> :tabnew<cr>           "新tab
+map <C-k> :bn<cr>               "下一个文件
+map <C-j> :bp<cr>               "上一个文件
 "--------------------------------状态栏设置--------------------------------
 " 开启状态栏菜单
 set wildmenu

@@ -4,10 +4,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call vundle#end()
 filetype plugin indent on    " required
-" Bundle 模块 {{
+" Bundle 基础模块 {{
     Bundle 'gmarik/Vundle.vim'
     Bundle 'tpope/vim-fugitive'
     Bundle 'L9'
+" }}
 
-
+" 开发插件模块 {{
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'mbbill/undotree'
+    Bundle 'jistr/vim-nerdtree-tabs'
 " }}

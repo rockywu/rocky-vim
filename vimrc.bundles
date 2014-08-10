@@ -21,4 +21,17 @@ filetype plugin indent on    " required
     Bundle 'tacahiroy/ctrlp-funky'
     " 快速替换工具
     Bundle 'tpope/vim-surround'
+    " php工具
+    Bundle 'spf13/PIV'
+    Bundle 'arnaud-lb/vim-php-namespace'
+    Bundle 'beyondwords/vim-twig'
+    " ctags插件
+    Bundle 'majutsushi/tagbar'
+    " 自动补全工具
+    Bundle 'Shougo/neocomplcache.vim'
+    Bundle 'Shougo/neosnippet.vim'
+    Bundle 'Shougo/neosnippet-snippets'
+    Bundle 'honza/vim-snippets'
+    "状态栏
+    Bundle 'Lokaltog/vim-powerline'
 " }}

@@ -6,12 +6,19 @@ call vundle#end()
 filetype plugin indent on    " required
 " Bundle 基础模块 {{
     Bundle 'gmarik/Vundle.vim'
-    Bundle 'tpope/vim-fugitive'
     Bundle 'L9'
+    " git 控件
+    Bundle 'tpope/vim-fugitive'
 " }}
 
 " 开发插件模块 {{
+    " 目录树
     Bundle 'scrooloose/nerdtree'
     Bundle 'mbbill/undotree'
     Bundle 'jistr/vim-nerdtree-tabs'
+    " 快速查找文件
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'tacahiroy/ctrlp-funky'
+    " 快速替换工具
+    Bundle 'tpope/vim-surround'
 " }}

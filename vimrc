@@ -104,11 +104,11 @@ endfunction
     endif
 " }
 
-map <C-l> :tabn<cr>             "下一个tab
-map <C-h> :tabp<cr>             "上一个tab
-map <C-n> :tabnew<cr>           "新tab
-map <C-k> :bn<cr>               "下一个文件
-map <C-j> :bp<cr>               "上一个文件
+nnoremap <C-l> :tabn<cr>             "下一个tab
+nnoremap <C-h> :tabp<cr>             "上一个tab
+nnoremap <C-n> :tabnew<cr>           "新tab
+nnoremap <C-k> :bn<cr>               "下一个文件
+nnoremap <C-j> :bp<cr>               "上一个文件
 "--------------------------------状态栏设置--------------------------------
 " 开启状态栏菜单
 set wildmenu

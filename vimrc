@@ -111,13 +111,16 @@ nnoremap <C-h> :tabp<cr>             "上一个tab
 nnoremap <C-n> :tabnew<cr>           "新tab
 nnoremap <C-k> :bn<cr>               "下一个文件
 nnoremap <C-j> :bp<cr>               "上一个文件
-"--------------------------------状态栏设置--------------------------------
 
-highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
+" 默认状态栏 {{
+if isdirectory(expand("~/.vim/bundle/vim-powerline/"))
+    highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 
-function! CurDir()
-    let curdir = substitute(getcwd(), $HOME, "~", "g")
-    return curdir
-endfunction
+    function! CurDir()
+        let curdir = substitute(getcwd(), $HOME, "~", "g")
+        return curdir
+    endfunction
 
-set statusline=[%n]\ %f%m%r%h\ \|\ \ CWD:\ %{CurDir()}/\ %=\|\ %l,%c\ %p%%\ \|\ ascii=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ @\ %{hostname()}\
+    set statusline=[%n]\ %f%m%r%h\ \|\ \ CWD:\ %{CurDir()}/\ %=\|\ %l,%c\ %p%%\ \|\ ascii=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ @\ %{hostname()}\
+endif
+" }}

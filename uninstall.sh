@@ -44,4 +44,4 @@ if [ -e "$HOME/.vimrc.plugin" ]; then
     eval $str
     result $str
 fi
-#rm -rf $endpath
+rm -rf $endpath

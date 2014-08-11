@@ -45,6 +45,8 @@ endfunction
     set hidden                                          " 允许缓存区切换时不保存
     set viewoptions=folds,options,cursor,unix,slash     " Better Unix / Windows compatibility
     set iskeyword+=_,#,-,$                              " 设置以下字符部分被当做单词分割，使用-=_,#,-,$可以除去
+    set wildmenu                                        " 开启状态栏菜单
+    set laststatus=2                                    " 总是显示状态栏status line
 " }}
 
 " 基本UI 配置 {{
@@ -110,11 +112,6 @@ nnoremap <C-n> :tabnew<cr>           "新tab
 nnoremap <C-k> :bn<cr>               "下一个文件
 nnoremap <C-j> :bp<cr>               "上一个文件
 "--------------------------------状态栏设置--------------------------------
-" 开启状态栏菜单
-set wildmenu
-
-"总是显示状态栏status line
-set laststatus=2
 
 highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 

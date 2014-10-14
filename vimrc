@@ -47,6 +47,7 @@ endfunction
     set iskeyword+=_,#,-,$                              " 设置以下字符部分被当做单词分割，使用-=_,#,-,$可以除去
     set wildmenu                                        " 开启状态栏菜单
     set laststatus=2                                    " 总是显示状态栏status line
+    set scrolloff=10                                    " 设置光标最大移动行数
 " }}
 
 " 基本UI 配置 {{

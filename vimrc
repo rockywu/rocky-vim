@@ -46,6 +46,7 @@ endfunction
     set viewoptions=folds,options,cursor,unix,slash     " Better Unix / Windows compatibility
     set iskeyword+=_,#,-,$                              " 设置以下字符部分被当做单词分割，使用-=_,#,-,$可以除去
     set wildmenu                                        " 开启状态栏菜单
+    set wildmode=list:longest,full                      " tab显示菜单栏和命令栏
     set laststatus=2                                    " 总是显示状态栏status line
     set scrolloff=10                                    " 设置光标于顶部最大行数间距
 " }}

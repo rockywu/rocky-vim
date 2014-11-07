@@ -11,6 +11,7 @@
         "hidden line of number
         set nonumber
 
+        nmap s <Plug>(easymotion-s)
         map  / <Plug>(easymotion-sn)
         omap / <Plug>(easymotion-tn)
         map  n <Plug>(easymotion-next)
@@ -22,6 +23,14 @@
         map <Leader>h <Plug>(easymotion-linebackward)
 
         let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+
+        "暂时不理解
+        " Use uppercase target labels and type as a lower case
+        let g:EasyMotion_use_upper = 1
+        " type `l` and match `l`&`L`
+        let g:EasyMotion_smartcase = 1
+        " Smartsign (type `3` and match `3`&`#`)
+        let g:EasyMotion_use_smartsign_us = 1
 
     endif
 " }}

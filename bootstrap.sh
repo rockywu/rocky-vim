@@ -94,6 +94,7 @@ upgrade_repo() {
 
       if [ "$1" = "$app_name" ]; then
           cd "$HOME/.$app_name" &&
+          git reset --hard &&
           git pull --rebase origin "$git_branch"
       fi
 

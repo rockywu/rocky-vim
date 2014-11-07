@@ -108,7 +108,7 @@ endfunction
 " }
 
 " 默认状态栏 {{
-if !isdirectory(expand("~/.vim/bundle/vim-powerline/"))
+if !isdirectory(expand("~/.vim/bundle/vim-airline/"))
     highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 
     function! CurDir()

@@ -33,7 +33,7 @@ filetype plugin indent on    " required
     Bundle 'Shougo/neosnippet-snippets'
     Bundle 'honza/vim-snippets'
     " 状态栏
-    Bundle 'Lokaltog/vim-powerline'
+    Bundle 'bling/vim-airline'
     " tags自动更新
     Bundle 'craigemery/vim-autotag'
     " 快速移动

@@ -49,11 +49,18 @@ endfunction
     set wildmode=list:longest,full                      " tab显示菜单栏和命令栏
     set laststatus=2                                    " 总是显示状态栏status line
     set scrolloff=10                                    " 设置光标于顶部最大行数间距
+    set cursorline                                      " 高亮显示光标当前所在行
 " }}
 
 " 基本UI 配置 {{
     set showmode                                        " 显示 --INSERT-- 之类的字眼在左下角的状态栏
     set backup                                          " 开启编辑文件backup
+    if has('persistent_undo')
+        set undofile                                    " 开启持久撤销 So is persistent undo ...
+        set undolevels=1000                             " Maximum number of changes that can be undone
+        set undoreload=10000                            " Maximum number lines to save for undo on a buffer reload
+    endif
+
     " Initialize directories {
         function! InitializeDirectories()
             let parent = $HOME

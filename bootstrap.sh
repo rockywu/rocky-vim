@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 ############################  TEST CONFIGURE
 #set -x
+
+# get execute path
+get_execute_path(){
+    #bash get current file directory
+    local DIR;
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    echo "$DIR";
+}
 ############################  SETUP PARAMETERS
 app_name='rocky-vim'
 [ -z "$git_uri" ] && git_uri='https://github.com/rockywu/rocky-vim.git'
@@ -8,9 +16,15 @@ git_branch='master'
 today=`date +%Y%m%d_%s`
 endpath="$HOME/.$app_name"
 debug_mode='0'
+executepath=`get_execute_path`
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
+
+go_execute_path() {
+    cd $executepath;
+}
+
 msg() {
     printf '%b\n' "$1" >&2
 }
@@ -143,7 +157,10 @@ create_symlinks() {
     lnif "$endpath/vimrc.before"    "$HOME/.vimrc.before"
     lnif "$endpath/vimrc.plugin"    "$HOME/.vimrc.plugin"
     lnif "$endpath/vimrc.shortcut"  "$HOME/.vimrc.shortcut"
-    lnif "$endpath"                 "$HOME/.vim"
+
+    if [ ! -d "$HOME/.vim" ];then
+        lnif "$endpath"                 "$HOME/.vim"
+    fi
 
     # Useful for fork maintainers
     touch  "$HOME/.vimrc.local"
@@ -182,6 +199,8 @@ create_symlinks "Setting up vim symlinks"
 clone_vundle    "Successfully cloned vundle"
 
 setup_vundle    "Now updating/installing plugins using Vundle"
+
+go_execute_path     "Go back execute path"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` https://github.com/rockywu/rocky-vim"

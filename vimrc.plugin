@@ -1,3 +1,18 @@
+" powerline {{
+    if isdirectory(expand("~/.vim/bundle/vim-powerline/"))
+        set guifont=PowerlineSymbols for Powerline
+        set nocompatible
+        set t_Co=256
+        let g:Powerline_symbols = 'fancy'
+    endif
+" }}
+
+" vim-easymotion {{
+    if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
+
+    endif
+" }}
+
 " NerdTree {{
     map <C-e> <plug>NERDTreeTabsToggle<CR>
     map <leader>e :NERDTreeToggle<CR>
@@ -192,6 +207,7 @@ endif
     let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
     let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 " }
+
 " Snippets {
     " Use honza's snippets.
     let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -200,10 +216,8 @@ endif
     let g:neosnippet#enable_snipmate_compatibility = 1
 
     " For snippet_complete marker.
-    if !exists("g:spf13_no_conceal")
-        if has('conceal')
-            set conceallevel=2 concealcursor=i
-        endif
+    if has('conceal')
+        set conceallevel=2 concealcursor=i
     endif
 
     " Enable neosnippets when using go

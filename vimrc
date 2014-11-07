@@ -95,9 +95,9 @@ endfunction
     endif
 " }
 
-" Use default Quick Start config {
-    if filereadable(expand("~/.vimrc.quickstart"))
-        source ~/.vimrc.quickstart
+" Use default Shortcut config {
+    if filereadable(expand("~/.vimrc.shortcut"))
+        source ~/.vimrc.shortcut
     endif
 " }
 
@@ -107,14 +107,8 @@ endfunction
     endif
 " }
 
-nnoremap <C-l> :tabn<cr>             "下一个tab
-nnoremap <C-h> :tabp<cr>             "上一个tab
-nnoremap <C-n> :tabnew<cr>           "新tab
-nnoremap <C-k> :bn<cr>               "下一个文件
-nnoremap <C-j> :bp<cr>               "上一个文件
-
 " 默认状态栏 {{
-if isdirectory(expand("~/.vim/bundle/vim-powerline/"))
+if !isdirectory(expand("~/.vim/bundle/vim-powerline/"))
     highlight StatusLine cterm=bold ctermfg=yellow ctermbg=blue
 
     function! CurDir()

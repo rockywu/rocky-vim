@@ -32,6 +32,10 @@ filetype plugin indent on    " required
     Bundle 'Shougo/neosnippet.vim'
     Bundle 'Shougo/neosnippet-snippets'
     Bundle 'honza/vim-snippets'
-    "状态栏
+    " 状态栏
     Bundle 'Lokaltog/vim-powerline'
+    " tags自动更新
+    Bundle 'craigemery/vim-autotag'
+    " 快速移动
+    Bundle 'Lokaltog/vim-easymotion'
 " }}

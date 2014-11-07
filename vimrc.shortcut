@@ -1,0 +1,18 @@
+"tab快速切换
+nnoremap <C-l> :tabn<cr>             "下一个tab 
+nnoremap <C-h> :tabp<cr>             "上一个tab 
+nnoremap <C-n> :tabnew<cr>           "新tab 
+nnoremap <C-k> :bn<cr>               "下一个文件
+nnoremap <C-j> :bp<cr>               "上一个文件
+"快速保存快捷键
+nmap <silent> <leader>ww :w<cr>
+nmap <silent> <leader>wf :w!<cr>
+
+"快速退出快捷键
+nmap <silent> <leader>qw :wq<cr>
+nmap <silent> <leader>qf :q!<cr>
+nmap <silent> <leader>qq :q<cr>
+nmap <silent> <leader>qa :qa<cr>
+
+"快速切换窗口
+nmap <C-w> <C-w><C-w>

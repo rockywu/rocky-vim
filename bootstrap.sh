@@ -12,7 +12,7 @@ get_execute_path(){
 ############################  SETUP PARAMETERS
 app_name='rocky-vim'
 [ -z "$git_uri" ] && git_uri='https://github.com/rockywu/rocky-vim.git'
-git_branch='version-1.1'
+git_branch='master'
 today=`date +%Y%m%d_%s`
 endpath="$HOME/.$app_name"
 debug_mode='0'

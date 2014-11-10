@@ -1,8 +1,10 @@
+let g:os=substitute(system('uname'), '\n', '', '')
 silent function! OSX()
-    return has('macunix')
+    return g:os == 'Darwin' || g:os == 'Mac'
 endfunction
+
 silent function! LINUX()
-    return has('unix')
+    return g:os == 'Linux'
 endfunction
 " Use bundles config {{
     if filereadable(expand("~/.vimrc.bundles"))

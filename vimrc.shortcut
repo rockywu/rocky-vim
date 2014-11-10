@@ -1,8 +1,40 @@
+" 获取选中模式中得内容
+function! GetVisual() range
+    let reg_save = getreg('"')
+    let regtype_save = getregtype('"')
+    let cb_save = &clipboard
+    set clipboard&
+    normal! ""gvy
+    let selection = getreg('"')
+    call setreg('"', reg_save, regtype_save)
+    let &clipboard = cb_save
+    return selection
+endfunction
 " OSX快速复制到剪贴板
 if OSX()
-    " 快速复制当前路径文件名
-    nnoremap <leader>cf :call system("pbcopy", expand("%"))<CR>
+    " 快速复制文件相对文件名
+    nmap <silent> <leader>cf :call system("pbcopy", expand("%"))<cr>
+    " 快速复制文件名
+    nmap <silent> <leader>cF :call system("pbcopy", expand("%:p:t"))<cr>
+    " 快速复制文件所在路径
+    nmap <silent> <leader>cp :call system("pbcopy", expand("%:p:h"))<cr>
+    " 快速复制文件绝对路径
+    nmap <silent> <leader>cP :call system("pbcopy", expand("%:p"))<cr>
+    " ctrl-x for cut 整行
+    vmap <C-x> :!pbcopy<cr>
+    " ctrl-c for copy 整行
+    vmap <C-c> :w !pbcopy <cr><cr>
+    " vim复制内容到剪贴板
+    vmap <silent> <Leader>c :call system("pbcopy", GetVisual())<cr>
 endif
+
+"快速替换 <C-h>全局替换 <C-r>查找替换
+vnoremap <C-h> ""y:%s/<C-R>=escape(@", '/\')<CR>//g<Left><Left>
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+"使用 *,#搜索当前选择的内容
+vnoremap <silent> * :call VisualSearch('f')<CR>
+vnoremap <silent> # :call VisualSearch('b')<CR>
 "tab快速切换
 nnoremap <C-l> :tabn<cr>             "下一个tab 
 nnoremap <C-h> :tabp<cr>             "上一个tab 
@@ -21,3 +53,4 @@ nmap <silent> <leader>qa :qa<cr>
 
 "快速切换窗口
 nmap <C-w> <C-w><C-w>
+

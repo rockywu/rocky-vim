@@ -14,8 +14,10 @@
         nmap s <Plug>(easymotion-s)
         map  / <Plug>(easymotion-sn)
         omap / <Plug>(easymotion-tn)
-        map  n <Plug>(easymotion-next)
-        map  N <Plug>(easymotion-prev)
+
+        "插件的查找优点小bug,不启用
+        "map  n <Plug>(easymotion-next)
+        "map  N <Plug>(easymotion-prev)
 
         map <Leader>l <Plug>(easymotion-lineforward)
         map <Leader>j <Plug>(easymotion-j)

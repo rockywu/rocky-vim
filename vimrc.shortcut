@@ -1,3 +1,8 @@
+" OSX快速复制到剪贴板
+if OSX()
+    " 快速复制当前路径文件名
+    nnoremap <leader>cf :call system("pbcopy", expand("%"))<CR>
+endif
 "tab快速切换
 nnoremap <C-l> :tabn<cr>             "下一个tab 
 nnoremap <C-h> :tabp<cr>             "上一个tab 

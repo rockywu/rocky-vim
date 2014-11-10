@@ -1,3 +1,6 @@
+silent function! OSX()
+    return has('macunix')
+endfunction
 silent function! LINUX()
     return has('unix')
 endfunction
@@ -127,3 +130,4 @@ if !isdirectory(expand("~/.vim/bundle/vim-airline/"))
     set statusline=[%n]\ %f%m%r%h\ \|\ \ CWD:\ %{CurDir()}/\ %=\|\ %l,%c\ %p%%\ \|\ ascii=%b%{((&fenc==\"\")?\"\":\"\ \|\ \".&fenc)}\ \|\ %{$USER}\ @\ %{hostname()}\
 endif
 " }}
+

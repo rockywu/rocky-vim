@@ -10,6 +10,15 @@ function! GetVisual() range
     let &clipboard = cb_save
     return selection
 endfunction
+
+" 此方法用于删除文本行尾的空格
+func! DeleteTrailingWS()
+    exe "normal mz"
+    %s/\s\+$//ge
+    nohl
+    exe "normal `z"
+endfunc
+
 " OSX快速复制到剪贴板
 if OSX()
     " 快速复制文件相对文件名
@@ -35,15 +44,21 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 "使用 *,#搜索当前选择的内容
 vnoremap <silent> * :call VisualSearch('f')<CR>
 vnoremap <silent> # :call VisualSearch('b')<CR>
+
 "tab快速切换
-nnoremap <C-l> :tabn<cr>             "下一个tab 
-nnoremap <C-h> :tabp<cr>             "上一个tab 
-nnoremap <C-n> :tabnew<cr>           "新tab 
+nnoremap <C-l> :tabn<cr>             "下一个tab
+nnoremap <C-h> :tabp<cr>             "上一个tab
+nnoremap <C-n> :tabnew<cr>           "新tab
 nnoremap <C-k> :bn<cr>               "下一个文件
 nnoremap <C-j> :bp<cr>               "上一个文件
+
 "快速保存快捷键
 nmap <silent> <leader>ww :w<cr>
 nmap <silent> <leader>wf :w!<cr>
+" 删除行尾空格并且保存该文件
+nmap <silent> <leader>ws :call DeleteTrailingWS()<cr>:w<cr>
+"在命令行中输入w!!进行readyonly文件保存
+cmap w!! w !sudo tee % >/dev/null
 
 "快速退出快捷键
 nmap <silent> <leader>qw :wq<cr>
@@ -54,7 +69,7 @@ nmap <silent> <leader>qa :qa<cr>
 "快速切换窗口
 nmap <C-w> <C-w><C-w>
 
-"Fast reloading of the _vimrc
+"快速加载最新vim配置
 map <silent> <leader>ss :source ~/.vimrc<cr>
 
 " 添加位移快捷键

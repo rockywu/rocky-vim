@@ -54,3 +54,10 @@ nmap <silent> <leader>qa :qa<cr>
 "快速切换窗口
 nmap <C-w> <C-w><C-w>
 
+"Fast reloading of the _vimrc
+map <silent> <leader>ss :source ~/.vimrc<cr>
+
+" 添加位移快捷键
+vnoremap < <gv
+vnoremap > >gv
+

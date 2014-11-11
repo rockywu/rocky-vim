@@ -15,7 +15,7 @@
         map  / <Plug>(easymotion-sn)
         omap / <Plug>(easymotion-tn)
 
-        "²å¼şµÄ²éÕÒÓÅµãĞ¡bug,²»ÆôÓÃ
+        "æ’ä»¶çš„æŸ¥æ‰¾ä¼˜ç‚¹å°bug,ä¸å¯ç”¨
         "map  n <Plug>(easymotion-next)
         "map  N <Plug>(easymotion-prev)
 
@@ -26,7 +26,7 @@
 
         let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
 
-        "ÔİÊ±²»Àí½â
+        "æš‚æ—¶ä¸ç†è§£
         " Use uppercase target labels and type as a lower case
         let g:EasyMotion_use_upper = 1
         " type `l` and match `l`&`L`
@@ -37,22 +37,43 @@
     endif
 " }}
 
+" Tabularize {
+    if isdirectory(expand("~/.vim/bundle/tabular"))
+        nmap <Leader>a& :Tabularize /&<CR>
+        vmap <Leader>a& :Tabularize /&<CR>
+        nmap <Leader>a= :Tabularize /=<CR>
+        vmap <Leader>a= :Tabularize /=<CR>
+        nmap <Leader>a: :Tabularize /:<CR>
+        vmap <Leader>a: :Tabularize /:<CR>
+        nmap <Leader>a:: :Tabularize /:\zs<CR>
+        vmap <Leader>a:: :Tabularize /:\zs<CR>
+        nmap <Leader>a, :Tabularize /,<CR>
+        vmap <Leader>a, :Tabularize /,<CR>
+        nmap <Leader>a,, :Tabularize /,\zs<CR>
+        vmap <Leader>a,, :Tabularize /,\zs<CR>
+        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+    endif
+" }
+
 " NerdTree {{
-    map <C-e> <plug>NERDTreeTabsToggle<CR>
-    map <leader>e :NERDTreeToggle<CR>
-    nmap <leader>nt :NERDTreeFind<CR>
+    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        map <C-e> <plug>NERDTreeTabsToggle<CR>
+        map <leader>e :NERDTreeToggle<CR>
+        nmap <leader>nt :NERDTreeFind<CR>
 
-    let NERDTreeShowBookmarks=1
-    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    let NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeMouseMode=2
-    let NERDTreeShowHidden=1
-    let NERDTreeKeepTreeInNewTab=1
-    let g:nerdtree_tabs_open_on_gui_startup=1
+        let NERDTreeShowBookmarks=1
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup=1
 
-    "ÉèÖÃ´ò¿ªvimµÄÊ±ºòÄ¬ÈÏ´ò¿ªÄ¿Â¼Ê÷
-    "let g:nerdtree_tabs_open_on_console_startup=1
+        "è®¾ç½®æ‰“å¼€vimçš„æ—¶å€™é»˜è®¤æ‰“å¼€ç›®å½•æ ‘
+        "let g:nerdtree_tabs_open_on_console_startup=1
+    endif
 " }}
 
 " ctrlp {{

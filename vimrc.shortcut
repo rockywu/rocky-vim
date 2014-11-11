@@ -70,7 +70,7 @@ nmap <silent> <leader>qa :qa<cr>
 nmap <C-w> <C-w><C-w>
 
 "快速加载最新vim配置
-map <silent> <leader>ss :source ~/.vimrc<cr>
+"map <silent> <leader>ss :source ~/.vimrc<cr>
 
 " 添加位移快捷键
 vnoremap < <gv

@@ -34,11 +34,6 @@ if [ -e "$HOME/.vimrc.bundles" ]; then
     eval $str
     result $str
 fi
-if [ -e "$HOME/.vimrc.before" ]; then
-    str="rm \"$HOME/.vimrc.before\""
-    eval $str
-    result $str
-fi
 if [ -e "$HOME/.vimrc.plugin" ]; then
     str="rm \"$HOME/.vimrc.plugin\""
     eval $str

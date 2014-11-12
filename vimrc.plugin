@@ -18,10 +18,32 @@
     endif
 " }}
 
+" syntastic {{
+    if isdirectory(expand("~/.vim/bundle/syntastic/"))
+        let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_error_symbol = '✗'
+        let g:syntastic_warning_symbol = '⚠'
+        let g:syntastic_auto_jump=1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_loc_list_height = 6
+        let g:syntastic_enable_highlighting = 0
+        " 过滤warnings
+        let g:syntastic_quiet_messages = { "level": "warnings" }
+    endif
+" }}
+
+" jshint {{
+    "需要安装 node jshint : sudo npm install -g jshint
+    if isdirectory(expand("~/.vim/bundle/jshint2.vim/"))
+        set runtimepath+=~/.vim/bundle/jshint2.vim/
+    endif
+" }}
+
 " vim-easymotion {{
     if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))
         "hidden line of number
-        set nonumber
+        "set nonumber
 
         nmap s <Plug>(easymotion-s)
         map  / <Plug>(easymotion-sn)

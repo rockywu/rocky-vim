@@ -30,15 +30,15 @@
         let g:syntastic_enable_highlighting = 0
         " 过滤warnings
         let g:syntastic_quiet_messages = { "level": "warnings" }
+        " jshint {{
+            "需要安装 node jshint : sudo npm install -g jshint
+            if isdirectory(expand("~/.vim/bundle/jshint2.vim/"))
+                set runtimepath+=~/.vim/bundle/jshint2.vim/
+            endif
+        " }}
     endif
 " }}
 
-" jshint {{
-    "需要安装 node jshint : sudo npm install -g jshint
-    if isdirectory(expand("~/.vim/bundle/jshint2.vim/"))
-        set runtimepath+=~/.vim/bundle/jshint2.vim/
-    endif
-" }}
 
 " vim-easymotion {{
     if isdirectory(expand("~/.vim/bundle/vim-easymotion/"))

@@ -42,4 +42,7 @@ filetype plugin indent on    " required
     Bundle 'godlygeek/tabular'
     " 配色方案
     Bundle 'altercation/vim-colors-solarized'
+    " 语法检查
+    Bundle 'scrooloose/syntastic'
+    Bundle 'Shutnik/jshint2.vim'
 " }}

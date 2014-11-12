@@ -40,4 +40,6 @@ filetype plugin indent on    " required
     Bundle 'Lokaltog/vim-easymotion'
     " 对齐插件
     Bundle 'godlygeek/tabular'
+    " 配色方案
+    Bundle 'altercation/vim-colors-solarized'
 " }}

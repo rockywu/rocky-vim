@@ -41,6 +41,8 @@
             \  '<script> escaping malformed URI reference',
             \  '</head> isn''t allowed in <body> elements'
             \ ]
+        "手动过滤javascript消息
+        let g:syntastic_javascript_jshint_quiet_messages = { "level" : "warnings" }
 
         " 过滤样式不合法
         let g:syntastic_quiet_messages = { "type":  "style"}

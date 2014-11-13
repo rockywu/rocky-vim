@@ -63,7 +63,11 @@ cmap w!! w !sudo tee % >/dev/null
 "快速退出快捷键
 nmap <silent> <leader>qw :wq<cr>
 nmap <silent> <leader>qf :q!<cr>
-nmap <silent> <leader>qq :q<cr>
+if isdirectory(expand("~/.vim/bundle/syntastic/"))
+    nmap <silent> <leader>qq :q<cr>:lclose<cr>
+else 
+    nmap <silent> <leader>qq :q<cr>
+endif
 nmap <silent> <leader>qa :qa<cr>
 
 "快速切换窗口

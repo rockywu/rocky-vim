@@ -20,7 +20,6 @@
 
 " syntastic {{
     if isdirectory(expand("~/.vim/bundle/syntastic/"))
-        let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
         let g:syntastic_check_on_open = 1
         let g:syntastic_error_symbol = '✗'
         let g:syntastic_warning_symbol = '⚠'
@@ -28,14 +27,31 @@
         let g:syntastic_auto_loc_list = 1
         let g:syntastic_loc_list_height = 6
         let g:syntastic_enable_highlighting = 0
-        " 过滤warnings
-        let g:syntastic_quiet_messages = { "level": "warnings" }
+        " 添加 checkers
+        let g:syntastic_php_checkers = ["php", "phpcs", "phpmd"]
+        "过滤html warnings
+        "let g:syntastic_html_tidy_quiet_messages = { "level" : "warnings" }
+        "手动过滤消息
+        let g:syntastic_html_tidy_ignore_errors = [
+            \  '<body> proprietary attribute "ontouchstart"',
+            \  'trimming empty <i>',
+            \  'plain text isn''t allowed in <head> elements',
+            \  '<base> escaping malformed URI reference',
+            \  'discarding unexpected <body>',
+            \  '<script> escaping malformed URI reference',
+            \  '</head> isn''t allowed in <body> elements'
+            \ ]
+
+        " 过滤样式不合法
+        let g:syntastic_quiet_messages = { "type":  "style"}
         " jshint {{
             "需要安装 node jshint : sudo npm install -g jshint
             if isdirectory(expand("~/.vim/bundle/jshint2.vim/"))
                 set runtimepath+=~/.vim/bundle/jshint2.vim/
             endif
         " }}
+        nmap <silent> <leader>ej :lnext<cr> "跳到下一个错误
+        nmap <silent> <leader>ek :lprevious<cr>  "跳到上一个错误
     endif
 " }}
 
@@ -93,7 +109,7 @@
 " NerdTree {{
     if isdirectory(expand("~/.vim/bundle/nerdtree"))
         map <C-e> <plug>NERDTreeTabsToggle<CR>
-        map <leader>e :NERDTreeToggle<CR>
+        "map <leader>e :NERDTreeToggle<CR>
         nmap <leader>nt :NERDTreeFind<CR>
 
         let NERDTreeShowBookmarks=1

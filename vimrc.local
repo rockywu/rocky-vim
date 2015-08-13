@@ -1,0 +1,3 @@
+au FileType html,javascript setl shiftwidth=2
+au FileType html,javascript setl tabstop=2
+au FileType html,javascript setl softtabstop=2

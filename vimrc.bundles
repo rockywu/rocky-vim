@@ -45,4 +45,8 @@ filetype plugin indent on    " required
     " 语法检查
     Bundle 'scrooloose/syntastic'
     Bundle 'Shutnik/jshint2.vim'
+    " node 组件
+    Bundle 'guileen/vim-node'
+    Bundle 'jamescarr/snipmate-nodejs'
+    Bundle 'myhere/vim-nodejs-complete'
 " }}

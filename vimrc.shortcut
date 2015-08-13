@@ -80,3 +80,8 @@ nmap <C-w> <C-w><C-w>
 vnoremap < <gv
 vnoremap > >gv
 
+"设置tab长度为2
+nmap <silent> <leader>tb2 :set shiftwidth=2<cr>:set tabstop=2<cr>:set softtabstop=2<cr>
+
+"设置tab长度为4
+nmap <silent> <leader>tb4 :set shiftwidth=4<cr>:set tabstop=4<cr>:set softtabstop=4<cr>

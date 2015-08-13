@@ -39,7 +39,9 @@
             \  '<base> escaping malformed URI reference',
             \  'discarding unexpected <body>',
             \  '<script> escaping malformed URI reference',
-            \  '</head> isn''t allowed in <body> elements'
+            \  '</head> isn''t allowed in <body> elements',
+            \  "error| unexpected 'list' (T_LIST), expecting identifier (T_STRING)",
+            \  '<input> proprietary attribute "multiple"',
             \ ]
         "手动过滤javascript消息
         let g:syntastic_javascript_jshint_quiet_messages = { "level" : "warnings" }
@@ -91,6 +93,10 @@
 
 " Tabularize {
     if isdirectory(expand("~/.vim/bundle/tabular"))
+        nmap <Leader>a- :Tabularize /-<CR>
+        vmap <Leader>a- :Tabularize /-<CR>
+        nmap <Leader>a/ :Tabularize /\/\/<CR>
+        vmap <Leader>a/ :Tabularize /\/\/<CR>
         nmap <Leader>a& :Tabularize /&<CR>
         vmap <Leader>a& :Tabularize /&<CR>
         nmap <Leader>a= :Tabularize /=<CR>

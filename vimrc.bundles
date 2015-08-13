@@ -22,7 +22,7 @@ filetype plugin indent on    " required
     " 快速替换工具
     Bundle 'tpope/vim-surround'
     " php工具
-    Bundle 'spf13/PIV'
+    "Bundle 'spf13/PIV'
     Bundle 'arnaud-lb/vim-php-namespace'
     Bundle 'beyondwords/vim-twig'
     " ctags插件

@@ -46,7 +46,7 @@ filetype plugin indent on    " required
     Bundle 'scrooloose/syntastic'
     Bundle 'Shutnik/jshint2.vim'
     " node 组件
-    Bundle 'guileen/vim-node'
-    Bundle 'jamescarr/snipmate-nodejs'
-    Bundle 'myhere/vim-nodejs-complete'
+    " Bundle 'guileen/vim-node'
+    " Bundle 'jamescarr/snipmate-nodejs'
+    " Bundle 'myhere/vim-nodejs-complete'
 " }}
